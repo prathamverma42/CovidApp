@@ -1,11 +1,15 @@
 import React from "react";
 import "./Footer.css";
 import img_bg from "./map-bg.png";
+import {Container, Row, Col} from 'react-bootstrap'
 function Footer() {
   return (
     <>
       <div style={{ backgroundColor: "#250D52", color: "#FFFFFF" }}>
-        <div className="container arrange">
+        <Container>
+        {/* <div > */}
+        <Row>
+          <Col sm={3}>
           <div className="content">
             <h3>
               <strong>RESOURCES</strong>
@@ -18,6 +22,8 @@ function Footer() {
               <p>Care</p>
             </div>
           </div>
+          </Col >
+          <Col sm={3}>
           <div className="content">
             <h3>
               <strong>ABOUT</strong>
@@ -28,6 +34,8 @@ function Footer() {
               ipsum' will uncover many web sites still in their infancy. Various
             </div>
           </div>
+          </Col>
+          <Col sm={3}>
           <div className="content">
             <h3>
               <strong>CONTACT US</strong>
@@ -39,15 +47,21 @@ function Footer() {
               odit harum?
             </div>
           </div>
+          </Col>
+          <Col sm={3}>
           <div className="content">
             <h3>
               <strong>COUNTRY's</strong>
             </h3>
             <div>
-              <img src={img_bg} width="300px" />
+              <img src={img_bg} width="100%"/>
             </div>
           </div>
-        </div>
+          </Col>
+        {/* </div> */}
+        
+        </Row>
+        </Container>
       </div>
       <div className="my-3" style={{ textAlign: "center" }}>
         <p style={{ fontSize: "18px" }}>&copy; 2020 All Rights Reserved.</p>

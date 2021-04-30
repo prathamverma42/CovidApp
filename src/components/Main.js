@@ -1,11 +1,15 @@
 import React from "react";
 import "./Main.css";
 import { Button } from "react-bootstrap";
+import {Container, Row, Col} from 'react-bootstrap'
 import covid from "./covid.png";
 function Main() {
   return (
     <>
-      <div className="info">
+         
+      <div className="info"> <Container>
+            <Row>
+        <Col sm={8}>
         <div className="header-info">
           <span className="header">COVID-19</span>
           <p className="header-content">
@@ -19,6 +23,9 @@ function Main() {
             <Button variant="dark">Hello World</Button>
           </div>
         </div>
+        </Col>
+      </Row>
+</Container>
       </div>
       <div className="about-us ">
         <div>
@@ -41,7 +48,10 @@ function Main() {
           </center>
         </div>
       </div>
-      <div className="state-form container">
+      <Container>
+        <Row>
+          <Col sm={6}>
+      {/* <div className="state-form "> */}
         <div className="state-from-div">
           <h1>
             <center>Find a State!</center>
@@ -65,10 +75,16 @@ function Main() {
           <Button  variant="secondary">Find State</Button>
           </center>
         </div>
+        </Col><Col sm={6}>
         <div>
-          <img src={covid} width="450px" />
+          <center>
+          <img src={covid} width="100%" />
+          </center>
         </div>
-      </div>
+      {/* </div> */}
+      </Col>
+      </Row>
+      </Container>
     </>
   );
 }
