@@ -5,7 +5,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 function Footer() {
   return (
     <>
-      <div style={{ backgroundColor: "#250D52", color: "#FFFFFF" }}>
+      <div style={{ backgroundColor: "#250D52", color: "#FFFFFF" }} id="contact">
         <Container>
         {/* <div > */}
         <Row>
