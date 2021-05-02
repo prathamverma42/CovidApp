@@ -5,27 +5,24 @@ import Home from "./components/Home";
 import Resources from "./components/resources";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
+
 function App() {
   const [select_state, setSelect_state] = useState("");
   const [arr, setArr] = useState([]);
   const [fetch_state, setFetch_state] = useState([]);
-  // let found = true;
   const [found, setFound] = useState(true);
+
   let abc = select_state;
-  
-  let new_state=[];
+  let new_state = [];
+
   useEffect(() => {
-    // console.log(arr);
-   new_state= arr.filter((user) => 
-    user.city.toLowerCase() === select_state.toLowerCase()
+    new_state = arr.filter(
+      (user) => user.city.toLowerCase() === select_state.toLowerCase()
     );
-    // console.log('NEWSTATE',new_state);
     setFetch_state(new_state);
-    if(fetch_state!==[]){
-// found=false;
-setFound(false);
+    if (fetch_state !== []) {
+      setFound(false);
     }
-    // console.log('FETCHSTATE',fetch_state);
   }, [arr]);
 
   const fetchresource = async () => {

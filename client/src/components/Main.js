@@ -1,39 +1,19 @@
 import React, { useState, useEffect } from "react";
-// import Example from './Example';
 import "./Main.css";
 import { Route } from "react-router-dom";
-import { Button, Alert, Toast, Overlay, Tooltip } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-// import { useRef } from 'react-bootstrap';
-import covid from "./covid.png";
+import covid from "../assets/covid.png";
+
 function Main(props) {
   const [state, setState] = useState("");
-  // const [show, setShow] = useState(false);
-  // const target = useRef(null);
-  const onBtnClick = () => {
-    console.log(state);
-    if (state != "none") {
-      // props.setSelect_state(state);
-      <Route>;</Route>;
-    } else {
-      console.log(props.state);
-    }
-  };
-  useEffect(() => {
-    // if(state!=="none")
-    // {
-    //   document.getElementById("abc").setAttribute("disabled",false);
-    // }
-    // console.log(state);
-    // console.log(state==="");
-  }, [state]);
-  // render(){
+
   return (
     <>
       <div style={{ height: "50px" }} id="home">
         {" "}
       </div>
-      <div className="info" style={{height: "25rem"}}>
+      <div className="info" style={{ height: "25rem" }}>
         {" "}
         <Container>
           <Row>
@@ -83,7 +63,6 @@ function Main(props) {
       <Container>
         <Row>
           <Col sm={6}>
-            {/* <div className="state-form "> */}
             <div className="state-from-div">
               <h1>
                 <center>Find a State!</center>
@@ -121,13 +100,6 @@ function Main(props) {
                     </Button>
                   )}
                 />
-
-                {/* <Button
-                  variant="secondary"
-                  onClick={onBtnClick}
-                >
-                  Find State
-                </Button> */}
               </center>
             </div>
           </Col>
@@ -137,7 +109,6 @@ function Main(props) {
                 <img src={covid} width="100%" />
               </center>
             </div>
-            {/* </div> */}
           </Col>
         </Row>
       </Container>

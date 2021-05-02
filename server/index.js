@@ -2,13 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
-import Resources from './routes/Resources.js';
+import Resources from "./routes/Resources.js";
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/',Resources);
+app.use("/", Resources);
 
 const MONGO_URI =
   "mongodb+srv://pverma42:prathamverma26142@cluster1.mkm8i.mongodb.net/test";
