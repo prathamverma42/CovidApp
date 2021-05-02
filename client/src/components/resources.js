@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import {
   Jumbotron,
@@ -9,28 +9,57 @@ import {
   Row,
   Form,
   Col,
+  Spinner,
 } from "react-bootstrap";
-// import Link from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from "axios";
+
 function Resources(props) {
   let mystyle = {
     "margin-bottom": "2%",
   };
+
   const [found_resources, setFound_resources] = useState("");
   const [add_resource, setAdd_resource] = useState("");
+  const [check_status, setCheck_status] = useState(true);
+
+  const [restype, setRestype] = useState('');
+  const [distributor, setDistributor] = useState('')
+  const [extrainfo, setExtrainfo] = useState('')
+  const [helpline, setHelpline] = useState('')
+
+
   const onsubmit = (e) => {
     e.preventDefault();
-
+    let body={
+      city: props.select_state,
+      restype: restype,
+      distributor: distributor,
+      extrainfo: extrainfo,
+      helpline: helpline
+    }
+    axios.post("http://localhost:5000/",body)
+    .then(res=>{
+      console.log(res.data);
+    })
+    console.log(body);
     setAdd_resource("1234");
   };
+  // const fun1=()=>{
+  //   console.log('hello');
+  // }
   const getResources = () => {
     setFound_resources("find-resources");
     props.fetchresource();
   };
-  return (
-    <div style={mystyle}>
-      {/* <h1>Resource</h1> */}
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  return (
+    <>
+    <div style={mystyle} autofocus>
       <Jumbotron fluid>
         <Container>
           <center>
@@ -48,20 +77,11 @@ function Resources(props) {
       {found_resources === "" ? (
         <>
           <center>
-            {/* <Button
-          variant="primary"
-          size="lg"
-          onClick={(e) => props.setSelect_state("")}
-        >
-          Go Back
-        </Button> */}
             <Route
               render={({ history }) => (
                 <Button
                   variant="danger"
-                  // className="btn-lg font-weight-bold mx-2 my-1"
                   onClick={() => {
-                    // props.changeNav(0)
                     history.replace("/");
                   }}
                 >
@@ -83,25 +103,29 @@ function Resources(props) {
                       style={{ border: "1px solid grey ", padding: "25px" }}
                       onSubmit={onsubmit}
                     >
-                      <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                      </Form.Group>
-                      <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>State</Form.Label>
-                        <Form.Control as="select" defaultValue="Choose...">
-                          <option>Choose...</option>
-                          <option>...</option>
+                      <Form.Group >
+                        <Form.Label>Resource Type</Form.Label>
+                        <Form.Control as="select" onChange={(e)=>setRestype(e.target.value)}>
+                          <option value="none">Choose...</option>
+                          <option value="Plasma">Plasma</option>
+                          <option value="Oxygen">Oxygen</option>
+                          <option value="Injection">Injection</option>
                         </Form.Control>
                       </Form.Group>
-                      <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                      <Form.Group >
+                        <Form.Label>Distributor</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Distributor" onChange={(e)=>setDistributor(e.target.value)} />
                       </Form.Group>
-                      <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                      <Form.Group >
+                        <Form.Label>Extra Info</Form.Label>
+                        <Form.Control type="text" placeholder="Extra Info" onChange={(e)=>setExtrainfo(e.target.value)}/>
                       </Form.Group>
-                      <Button variant="primary" type="submit">
+                      
+                      <Form.Group >
+                        <Form.Label>Helpline</Form.Label>
+                        <Form.Control type="number" placeholder="Helpline" onChange={(e)=>setHelpline(e.target.value)}/>
+                      </Form.Group>
+                      <Button variant="primary" type="submit" >
                         Add Resource
                       </Button>
                     </Form>
@@ -126,60 +150,46 @@ function Resources(props) {
       ) : (
         <>
           <center>
-            <Button onClick={(e) => setFound_resources("")}>Go Back</Button>
+            <Button
+              onClick={(e) => {
+                setFound_resources("");
+                props.setFetch_state([]);
+                //  props.setFound(false);
+              }}
+            >
+              Go Back
+            </Button>
             <h1>RESOURCES</h1>
-            {props.arr.map(user=> {console.log(user)
-            return <Cards user={user}/>
-          })}
+            {props.fetch_state.length === 0 ? (
+              check_status === true ? (
+                <>
+                  <div className="mb-2">
+                    <Button
+                      variant="info"
+                      size="lg"
+                      style={{ fontSize: "3rem", alignItems: "center" }}
+                    >
+                      <Spinner animation="grow" variant="light" /> LOADING
+                    </Button>
+                  </div>
+                  setTimeout(()
+                  {(console.log("hello world"), setCheck_status(false))}, 2000);
+                </>
+              ) : (
+                <>
+                  <h1>No resource found </h1>
+                </>
+              )
+            ) : (
+              props.fetch_state.map((user) => {
+                return <Cards user={user} />;
+              })
+            )}
           </center>
         </>
       )}
-
-      {/* <Row>
-        <Col xs={6}>
-          <Toast show={showA} onClose={toggleShowA}>
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded mr-2"
-                alt=""
-              />
-              <strong className="mr-auto">Bootstrap</strong>
-              <small>11 mins ago</small>
-            </Toast.Header>
-            <Toast.Body>
-              Woohoo, you're reading this text in a Toast!
-            </Toast.Body>
-          </Toast>
-        </Col>
-        <Col xs={6}>
-          <Button onClick={toggleShowA}>
-            Toggle Toast <strong>with</strong> Animation
-          </Button>
-        </Col>
-        <Col xs={6} className="my-1">
-          <Toast onClose={toggleShowB} show={showB} animation={false}>
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded mr-2"
-                alt=""
-              />
-              <strong className="mr-auto">Bootstrap</strong>
-              <small>11 mins ago</small>
-            </Toast.Header>
-            <Toast.Body>
-              Woohoo, you're reading this text in a Toast!
-            </Toast.Body>
-          </Toast>
-        </Col>
-        <Col xs={6}>
-          <Button onClick={toggleShowB}>
-            Toggle Toast <strong>without</strong> Animation
-          </Button>
-        </Col>
-      </Row> */}
     </div>
+    </>
   );
 }
 

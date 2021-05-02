@@ -11,9 +11,9 @@ import logo from "./logo.png";
 
 function NavbarTop() {
   return (
-      <div fixed="top">
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" id="home" >
-          <Navbar.Brand href="#home"><img src={logo} width="130px" style={{ "border-radius": "10%" }} /></Navbar.Brand>
+      <div >
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light"fixed="top" >
+          <Navbar.Brand href="http://localhost:3000/"><img src={logo} width="130px" style={{ "border-radius": "10%" }} /></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">

@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import Example from './Example';
 import "./Main.css";
-import {Route} from 'react-router-dom';
+import { Route } from "react-router-dom";
 import { Button, Alert, Toast, Overlay, Tooltip } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 // import { useRef } from 'react-bootstrap';
@@ -14,9 +14,7 @@ function Main(props) {
     console.log(state);
     if (state != "none") {
       // props.setSelect_state(state);
-      <Route>
-;
-        </Route>
+      <Route>;</Route>;
     } else {
       console.log(props.state);
     }
@@ -28,16 +26,19 @@ function Main(props) {
     // }
     // console.log(state);
     // console.log(state==="");
-  }, [state])
+  }, [state]);
   // render(){
   return (
     <>
-      <div className="info" id="home">
+      <div style={{ height: "50px" }} id="home">
+        {" "}
+      </div>
+      <div className="info" style={{height: "25rem"}}>
         {" "}
         <Container>
           <Row>
             <Col sm={8}>
-              <div className="header-info">
+              <div className="header-info my-5">
                 <span className="header">COVID-19</span>
                 <p className="header-content">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -45,16 +46,16 @@ function Main(props) {
                   labore corporis quia sint optio? Ducimus minima error quia.
                   Maiores quos eaque officia rerum.
                 </p>
-                <div className="header-btn ">
-                  <Button variant="dark">Hello World</Button>&emsp;
-                  <Button variant="dark">Hello World</Button>
-                </div>
               </div>
             </Col>
           </Row>
         </Container>
       </div>
-      <div className="about-us " id="about-us">
+      <div style={{ height: "50px" }} id="about-us">
+        {" "}
+      </div>
+
+      <div className="about-us ">
         <div>
           <p className="about-header">
             <center>About Us</center>
@@ -75,11 +76,15 @@ function Main(props) {
           </center>
         </div>
       </div>
+      <div style={{ height: "50px" }} id="resources">
+        {" "}
+      </div>
+
       <Container>
         <Row>
           <Col sm={6}>
             {/* <div className="state-form "> */}
-            <div className="state-from-div" id="resources">
+            <div className="state-from-div">
               <h1>
                 <center>Find a State!</center>
               </h1>
@@ -88,9 +93,9 @@ function Main(props) {
               <select
                 className="category"
                 onClick={(e) => props.setSelect_state(e.target.value)}
-                onChange={(e)=> setState(e.target.value)}
+                onChange={(e) => setState(e.target.value)}
               >
-                <option value="" selected >
+                <option value="" selected>
                   choose...
                 </option>
                 <option value="HimachalPradesh">Himachal Pradesh</option>
@@ -107,8 +112,10 @@ function Main(props) {
                   render={({ history }) => (
                     <Button
                       variant="secondary"
-                      onClick={()=>{        history.replace(`/${state}`)}}
-                      disabled={state===""}
+                      onClick={() => {
+                        history.replace(`/${state}`);
+                      }}
+                      disabled={state === ""}
                     >
                       Find State{" "}
                     </Button>
@@ -134,6 +141,9 @@ function Main(props) {
           </Col>
         </Row>
       </Container>
+      <div style={{ height: "60px" }} id="contact">
+        {" "}
+      </div>
     </>
   );
 }
