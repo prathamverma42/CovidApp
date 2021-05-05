@@ -3,14 +3,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Resources from "./components/resources";
+import Admin_UserPage from "./components/Admin_UserPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-
+import AdminResourceAdd from "./components/AdminResoureAdd";
 function App() {
   const [select_state, setSelect_state] = useState("");
   const [arr, setArr] = useState([]);
   const [fetch_state, setFetch_state] = useState([]);
   const [found, setFound] = useState(true);
+  const [admin, setAdmin] = useState("");
 
   let abc = select_state;
   let new_state = [];
@@ -58,7 +60,20 @@ function App() {
                 select_state={select_state}
                 fetchresource={fetchresource}
                 setSelect_state={setSelect_state}
+                setAdmin={setAdmin}
               />
+            )}
+          />
+          <Route
+            path={"/Admin-User_page"}
+            render={(props) => (
+              <Admin_UserPage {...props} state={select_state} />
+            )}
+          />
+          <Route
+            path={"/AdminResourcePage"}
+            render={(props) => (
+              <AdminResourceAdd {...props} state={select_state} />
             )}
           />
         </Switch>

@@ -11,20 +11,26 @@ import {
 } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
+import AdminModal from "./AdminModal.js";
 
 function Resources(props) {
   let mystyle = {
     "margin-bottom": "2%",
   };
 
-  const [found_resources, setFound_resources] = useState("");
-  const [add_resource, setAdd_resource] = useState("");
-  const [check_status, setCheck_status] = useState(true);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [restype, setRestype] = useState("");
   const [distributor, setDistributor] = useState("");
   const [extrainfo, setExtrainfo] = useState("");
   const [helpline, setHelpline] = useState("");
 
+  const [found_resources, setFound_resources] = useState("");
+  const [add_resource, setAdd_resource] = useState("");
+  const [check_status, setCheck_status] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -52,6 +58,12 @@ function Resources(props) {
 
   return (
     <>
+      <AdminModal
+        show={show}
+        handleShow={handleShow}
+        handleClose={handleClose}
+        setAdmin={props.setAdmin}
+      />
       <div style={mystyle} autofocus>
         <Jumbotron fluid>
           <Container>
@@ -87,65 +99,19 @@ function Resources(props) {
             <Container>
               <Row className="my-5 ">
                 <Col sm={6} className="mt-3">
-                  {add_resource === "" ? (
-                    <>
-                      <center>
-                        <h1>Add Resources</h1>
-                      </center>
-                      <Form
-                        style={{ border: "1px solid grey ", padding: "25px" }}
-                        onSubmit={onsubmit}
+                  {
+                    <Route
+                    render={({ history }) => (
+                      <Button
+                        onClick={() => {
+                          history.replace("/Admin-User_page");
+                        }}
                       >
-                        <Form.Group>
-                          <Form.Label>Resource Type</Form.Label>
-                          <Form.Control
-                            as="select"
-                            onChange={(e) => setRestype(e.target.value)}
-                          >
-                            <option value="none">Choose...</option>
-                            <option value="Plasma">Plasma</option>
-                            <option value="Oxygen">Oxygen</option>
-                            <option value="Injection">Injection</option>
-                          </Form.Control>
-                        </Form.Group>
-                        <Form.Group>
-                          <Form.Label>Distributor</Form.Label>
-                          <Form.Control
-                            type="text"
-                            placeholder="Enter Distributor"
-                            onChange={(e) => setDistributor(e.target.value)}
-                          />
-                        </Form.Group>
-                        <Form.Group>
-                          <Form.Label>Extra Info</Form.Label>
-                          <Form.Control
-                            type="text"
-                            placeholder="Extra Info"
-                            onChange={(e) => setExtrainfo(e.target.value)}
-                          />
-                        </Form.Group>
-
-                        <Form.Group>
-                          <Form.Label>Helpline</Form.Label>
-                          <Form.Control
-                            type="number"
-                            placeholder="Helpline"
-                            onChange={(e) => setHelpline(e.target.value)}
-                          />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                          Add Resource
-                        </Button>
-                      </Form>
-                    </>
-                  ) : (
-                    <>
-                      <h1>Successfully added</h1>
-                      <Button onClick={(e) => setAdd_resource("")}>
-                        Add More
+                        Add Resources
                       </Button>
-                    </>
-                  )}
+                    )}
+                  />
+                  }
                 </Col>
                 <Col sm={6} className="mt-3">
                   <center>
