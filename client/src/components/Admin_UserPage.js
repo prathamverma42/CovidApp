@@ -1,10 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Route } from "react-router-dom";
 import Resources from "./resources.js";
+import axios from 'axios';
 function Admin_UserPage(props) {
-    const onsubmit=()=> {
-        
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const onsubmit=(e)=> {
+    (e).preventDefault();
+    const user={
+      email:email,
+      password:password
+    };
+    console.log(user);
+        axios.get('http://localhost:5000/users',user).then(res=>{
+          console.log(res.data);
+        })
     }
   return (
     <div>
@@ -34,12 +45,12 @@ function Admin_UserPage(props) {
               onSubmit={onsubmit}
             >
               <Form.Group>
-                <Form.Label>User Id</Form.Label>
-                <Form.Control placeholder="Enter your user-id"></Form.Control>
+                <Form.Label>Email</Form.Label>
+                <Form.Control placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}></Form.Control>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Password</Form.Label>
-                <Form.Control placeholder="Enter your Password"></Form.Control>
+                <Form.Control placeholder="Enter your Password" onChange={(e)=>setPassword(e.target.value)}></Form.Control>
               </Form.Group>
               
               
@@ -47,7 +58,8 @@ function Admin_UserPage(props) {
                   render={({ history }) => (
                     <Button
                       variant="primary"
-                      onClick={() => {
+                      onClick={(e) => {
+                        onsubmit(e);
                         history.replace(`/AdminResourcePage`);
                       }}
                    
