@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import AdminModal from "./AdminModal.js";
+// import AdminModal from "./AdminModal.js";
 
 function Resources(props) {
   let mystyle = {
@@ -58,12 +58,7 @@ function Resources(props) {
 
   return (
     <>
-      <AdminModal
-        show={show}
-        handleShow={handleShow}
-        handleClose={handleClose}
-        setAdmin={props.setAdmin}
-      />
+      
       <div style={mystyle} autofocus>
         <Jumbotron fluid>
           <Container>
