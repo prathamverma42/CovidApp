@@ -58,7 +58,7 @@ function AdminResoureAdd() {
   };
   return (
     <div>
-      <Container>
+      {/* <Container>
         <Row>
           <Col sm={6}>
             <Form
@@ -172,7 +172,7 @@ function AdminResoureAdd() {
             </Form>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 }

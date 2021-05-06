@@ -18,38 +18,36 @@ function Resources(props) {
     "margin-bottom": "2%",
   };
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
-  const [restype, setRestype] = useState("");
-  const [distributor, setDistributor] = useState("");
-  const [extrainfo, setExtrainfo] = useState("");
-  const [helpline, setHelpline] = useState("");
+  // const [restype, setRestype] = useState("");
+  // const [distributor, setDistributor] = useState("");
+  // const [extrainfo, setExtrainfo] = useState("");
+  // const [helpline, setHelpline] = useState("");
 
   const [found_resources, setFound_resources] = useState("");
-  const [add_resource, setAdd_resource] = useState("");
-  const [check_status, setCheck_status] = useState(true);
+  const [check_status, setCheck_status] = useState(1);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const onsubmit = (e) => {
-    e.preventDefault();
-    let body = {
-      city: props.select_state,
-      restype: restype,
-      distributor: distributor,
-      extrainfo: extrainfo,
-      helpline: helpline,
-    };
-    axios.post("http://localhost:5000/", body).then((res) => {
-      console.log(res.data);
-    });
-    console.log(body);
-    setAdd_resource("1234");
-  };
+  // const onsubmit = (e) => {
+  //   e.preventDefault();
+  //   let body = {
+  //     city: props.select_state,
+  //     restype: restype,
+  //     distributor: distributor,
+  //     extrainfo: extrainfo,
+  //     helpline: helpline,
+  //   };
+  //   axios.post("http://localhost:5000/", body).then((res) => {
+  //     console.log(res.data);
+  //   });
+  //   console.log(body);
+  // };
 
   const getResources = () => {
     setFound_resources("find-resources");
@@ -129,7 +127,7 @@ function Resources(props) {
               </Button>
               <h1>RESOURCES</h1>
               {props.fetch_state.length === 0 ? (
-                check_status === true ? (
+                check_status === 1 ? (
                   <>
                     <div className="mb-2">
                       <Button
@@ -140,13 +138,11 @@ function Resources(props) {
                         <Spinner animation="grow" variant="light" /> LOADING
                       </Button>
                     </div>
-                    setTimeout(()
-                    {(console.log("hello world"), setCheck_status(false))},
-                    2000);
+                    
                   </>
                 ) : (
                   <>
-                    <h1>No resource found </h1>
+                    <h1>Hello world</h1>
                   </>
                 )
               ) : (

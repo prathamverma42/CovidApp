@@ -21,16 +21,30 @@ function App() {
     new_state = arr.filter(
       (user) => user.city.toLowerCase() === select_state.toLowerCase()
     );
+    if(new_state===[]){
+      new_state="hello";
+    }
+    console.log(new_state);
     setFetch_state(new_state);
     if (fetch_state !== []) {
       setFound(false);
     }
+    // console.log(new_state);
   }, [arr]);
 
   const fetchresource = async () => {
     axios.get("http://localhost:5000/").then((res) => {
       setArr(res.data);
     });
+    setTimeout(function () {
+      if(new_state==="hello"){
+        alert("Hello");
+      }
+    }, 3000);
+
+    // setTimeout(function () {
+    //   console.log("hello world"), setCheck_status(0);
+    // }, 2000);
   };
 
   return (

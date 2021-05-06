@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
-// app.use("/", Resources);
+app.use("/", Resources);
 app.use("/users",Users);
 
 const MONGO_URI =
