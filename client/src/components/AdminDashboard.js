@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Container, Form, Row, Col, Card } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
+
 function AdminDashboard() {
   return (
     <div>
@@ -81,25 +81,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
-{
-  /* <Card>
-  <Card.Header as="h5">Add Resources</Card.Header>
-  <Card.Body>
-    <Card.Text>
-      With supporting text below as a natural lead-in to additional content.
-    </Card.Text>
-    <Route
-      render={({ history }) => (
-        <Button
-          onClick={() => {
-            history.push('/AdminResourceAdd');
-          }}
-        >
-          ADD RESOURCE
-        </Button>
-      )}
-    />
-  </Card.Body>
-</Card> */
-}
+export default AdminDashboard; 

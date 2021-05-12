@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Container, Form, Row, Col, Table } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
-function UserDashboard() {
-  const [state, setState] = useState('');
-  const [restype, setRestype] = useState('');
-  const [extrainfo, setExtrainfo] = useState('');
-  const [helpline, setHelpline] = useState('');
-  const [distributor, setDistributor] = useState('');
-  const [select_state, setSelect_state] = useState('');
+import React, { useState, useEffect } from "react";
+import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from "axios";
+
+function AdminResourceAdd() {
+  const [state, setState] = useState("");
+  const [restype, setRestype] = useState("");
+  const [extrainfo, setExtrainfo] = useState("");
+  const [helpline, setHelpline] = useState("");
+  const [distributor, setDistributor] = useState("");
+  const [select_state, setSelect_state] = useState("");
   const [data, setData] = useState([]);
+
   const onsubmit = (e) => {
     console.log(data);
     e.preventDefault();
     if (
-      state !== '' &&
-      restype !== '' &&
-      extrainfo !== '' &&
-      helpline !== '' &&
-      distributor !== ''
+      state !== "" &&
+      restype !== "" &&
+      extrainfo !== "" &&
+      helpline !== "" &&
+      distributor !== ""
     ) {
       const resource = {
         city: state,
@@ -27,63 +29,52 @@ function UserDashboard() {
         helpline: helpline,
         distributor: distributor,
       };
-      console.log(resource);
       axios
-        .post('http://localhost:5000/resources/add', resource)
+        .post("http://localhost:5000/resources/add", resource)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
     } else {
-      alert('please add the sufficient fields');
+      alert("please add the sufficient fields");
     }
 
-    // axios
-
     axios
-      .post('http://localhost:5000/resources/', { city: select_state })
+      .post("http://localhost:5000/resources/", { city: select_state })
       .then((res) => {
-        console.log(res.data);
-        if (res.data === 'No resources') {
+        // console.log(res.data);
+        if (res.data === "No resources") {
           setData([]);
         } else {
           setData(res.data);
         }
-        //   console.log(data.length);
       });
-    // ==============
   };
   const deleteResource = (data) => {
-    // console.log(data);
-    // console.log("fnsdjk");
     axios
       .delete(`http://localhost:5000/resources/${data._id}`)
       .then((res) => console.log(res.data));
-    // e.preventDefault();
+
     axios
-      .post('http://localhost:5000/resources/', { city: select_state })
+      .post("http://localhost:5000/resources/", { city: select_state })
       .then((res) => {
-        console.log(res.data);
-        if (res.data === 'No resources') {
+        // console.log(res.data);
+        if (res.data === "No resources") {
           setData([]);
         } else {
           setData(res.data);
         }
-        //   console.log(data.length);
       });
-
-    // ========
   };
   const fetchCityResources = () => {
     axios
-      .post('http://localhost:5000/resources/', { city: select_state })
+      .post("http://localhost:5000/resources/", { city: select_state })
       .then((res) => {
-        console.log(res.data);
-        if (res.data === 'No resources') {
+        // console.log(res.data);
+        if (res.data === "No resources") {
           setData([]);
         } else {
           setData(res.data);
         }
-        //   console.log(data.length);
       });
   };
   useEffect(() => {}, [data]);
@@ -96,10 +87,10 @@ function UserDashboard() {
               variant="secondary"
               className="mt-3"
               onClick={() => {
-                history.push('/AdminDashboard');
+                history.push("/AdminDashboard");
               }}
             >
-              Go to Admin Page !
+              Go to Admin Page !!!
             </Button>
           </center>
         )}
@@ -112,7 +103,7 @@ function UserDashboard() {
         <Row>
           <Col sm={6}>
             <Form
-              style={{ border: '1px solid grey ', padding: '25px' }}
+              style={{ border: "1px solid grey ", padding: "25px" }}
               onSubmit={onsubmit}
             >
               <Form.Group>
@@ -173,17 +164,14 @@ function UserDashboard() {
               </Button>
             </Form>
           </Col>
-          
         </Row>
-        <h4 className='mt-3'>Choose City!!</h4>
-        <Row className='mt-4'>
-        <Col sm={8}>
+        <h4 className="mt-3">Choose City!!</h4>
+        <Row className="mt-4">
+          <Col sm={8}>
             <select
               className="category"
-              // onClick={(e) => Select_state(e.target.value)}
               onChange={(e) => {
                 setSelect_state(e.target.value);
-                // fetchCityResources();
               }}
             >
               <option value="" selected>
@@ -196,39 +184,18 @@ function UserDashboard() {
               <option value="MadhyaPradesh">Madhya Pradesh</option>
               <option value="Haryana">Haryana</option>
             </select>
-
           </Col>
           <Col sm={4}>
-          
-            <Button className="col-4"size="lg" onClick={fetchCityResources}>Fetch</Button>
-          
-            </Col>
+            <Button  onClick={fetchCityResources}>
+              Fetch Resources
+            </Button>
+          </Col>
         </Row>
-
       </Container>
       <Container>
-        <h1 className='mt-4'>Resources Table</h1>
-        {/* <select
-          className="category"
-          // onClick={(e) => Select_state(e.target.value)}
-          onChange={(e) => {
-            setSelect_state(e.target.value);
-            // fetchCityResources();
-          }}
-        >
-          <option value="" selected>
-            choose city...
-          </option>
-          <option value="HimachalPradesh">Himachal Pradesh</option>
-          <option value="Punjab">Punjab</option>
-          <option value="Delhi">Delhi</option>
-          <option value="Maharashtra">Maharashtra</option>
-          <option value="MadhyaPradesh">Madhya Pradesh</option>
-          <option value="Haryana">Haryana</option>
-        </select>
-        <Button onClick={fetchCityResources}>Fetch</Button> */}
+        <h1 className="mt-4">Resources Table</h1>
 
-        <Table striped bordered hover className='mt-3'>
+        <Table striped bordered hover className="mt-3">
           <thead>
             <tr>
               <th>Resource Type</th>
@@ -265,4 +232,4 @@ function UserDashboard() {
   );
 }
 
-export default UserDashboard;
+export default AdminResourceAdd;

@@ -9,26 +9,15 @@ import {
   Form,
   Col,
   Spinner,
-  Card
+  Card,
 } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-// import AdminModal from "./AdminModal.js";
 
 function Resources(props) {
   let mystyle = {
     "margin-bottom": "2%",
   };
-
-  // const [show, setShow] = useState(false);
-
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
-  // const [restype, setRestype] = useState("");
-  // const [distributor, setDistributor] = useState("");
-  // const [extrainfo, setExtrainfo] = useState("");
-  // const [helpline, setHelpline] = useState("");
 
   const [found_resources, setFound_resources] = useState("");
   const [check_status, setCheck_status] = useState(1);
@@ -36,42 +25,22 @@ function Resources(props) {
     window.scrollTo(0, 0);
   }, []);
 
-  // const onsubmit = (e) => {
-  //   e.preventDefault();
-  //   let body = {
-  //     city: props.select_state,
-  //     restype: restype,
-  //     distributor: distributor,
-  //     extrainfo: extrainfo,
-  //     helpline: helpline,
-  //   };
-  //   axios.post("http://localhost:5000/", body).then((res) => {
-  //     console.log(res.data);
-  //   });
-  //   console.log(body);
-  // };
   const [cityResources, setCityResources] = useState([]);
   const getResources = () => {
     setFound_resources("find-resources");
     const body = {
       city: props.select_state,
     };
-    // console.log()
+
     axios.post("http://localhost:5000/resources", body).then((res) => {
-      // console.log(res.data);
-      if(res.data!=="No resources"){
+      if (res.data !== "No resources") {
         setCityResources(res.data);
-      }
-      else{
+      } else {
         setCheck_status(0);
       }
     });
-    // console.log(cityResources);
-    // props.fetchresource();
   };
-  // useEffect(() => {
-  //   console.log(cityResources);
-  // }, [cityResources]);
+
   return (
     <>
       <div style={mystyle} autofocus>
@@ -95,7 +64,7 @@ function Resources(props) {
               <Route
                 render={({ history }) => (
                   <Button
-                  size="lg"
+                    size="lg"
                     variant="outline-success"
                     onClick={() => {
                       history.replace("/");
@@ -110,79 +79,67 @@ function Resources(props) {
             <Container>
               <Row className="my-5 ">
                 <Col sm={6} className="mt-3">
-               <center>
-                <Card className="bg-warning">
-
-                <Card.Header as="h5">Add Resources</Card.Header>
-                <Card.Body>
-                  <Card.Text>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </Card.Text>
-                  <Route
-                      render={({ history }) => (
-                        <Button
-                        size="lg"
-                        variant="outline-dark"
-                          onClick={() => {
-                            history.replace("/Admin-User_page");
-                          }}
-                        >
-                          Add Resources
-                        </Button>
-                      )}
-                    />
-                </Card.Body>
-              </Card>
-              </center>
+                  <center>
+                    <Card className="bg-warning">
+                      <Card.Header as="h5">Add Resources</Card.Header>
+                      <Card.Body>
+                        <Card.Text>
+                          With supporting text below as a natural lead-in to
+                          additional content.
+                        </Card.Text>
+                        <Route
+                          render={({ history }) => (
+                            <Button
+                              size="lg"
+                              variant="outline-dark"
+                              onClick={() => {
+                                history.replace("/Admin-User_page");
+                              }}
+                            >
+                              Add Resources
+                            </Button>
+                          )}
+                        />
+                      </Card.Body>
+                    </Card>
+                  </center>
                 </Col>
                 <Col sm={6} className="mt-3">
                   <center>
-                <Card className="bg-info">
-                <Card.Header as="h5">Find Resources</Card.Header>
-                <Card.Body>
-                  <Card.Text>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </Card.Text>
-                  <Button size="lg" variant="outline-light"onClick={getResources}>Find Resources</Button>
-                </Card.Body>
-              </Card>
-              </center>
-                  
-                  
+                    <Card className="bg-info">
+                      <Card.Header as="h5">Find Resources</Card.Header>
+                      <Card.Body>
+                        <Card.Text>
+                          With supporting text below as a natural lead-in to
+                          additional content.
+                        </Card.Text>
+                        <Button
+                          size="lg"
+                          variant="outline-light"
+                          onClick={getResources}
+                        >
+                          Find Resources
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </center>
                 </Col>
               </Row>
             </Container>
           </>
         ) : (
           <>
-            {/* {
-            cityResources.length!==0? 
-              
-            
-
-             cityResources.map((user) => {
-              return <Cards user={user} />;
-            })
-          
-            :
-            <p></p>
-          } */}
-
             <center>
               <Button
+              className="mt-2 mb-4 col-1 "
                 onClick={(e) => {
                   setFound_resources("");
                   props.setFetch_state([]);
                 }}
               >
-                Go Back
+                GO BACK
               </Button>
-              <br/>
-              <br/>
               <h1>RESOURCES</h1>
-              <br/>
               {cityResources.length === 0 ? (
                 check_status === 1 ? (
                   <>
@@ -201,7 +158,7 @@ function Resources(props) {
                     <h3>No resources found</h3>
                   </>
                 )
-               ): (
+              ) : (
                 cityResources.map((user) => {
                   return <Cards user={user} />;
                 })

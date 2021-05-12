@@ -1,15 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import bodyParser from "body-parser";
+
 import Resources from "./routes/Resources.js";
-import Users from './routes/users.js';
+import Users from "./routes/users.js";
+
 const app = express();
-app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
+
 app.use("/resources", Resources);
-app.use("/users",Users);
+app.use("/users", Users);
 
 const MONGO_URI =
   "mongodb+srv://pverma42:prathamverma26142@cluster1.mkm8i.mongodb.net/covidApp";

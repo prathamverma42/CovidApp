@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const CitySchema = mongoose.Schema({
-    city : String
-})
+  city: String,
+});
 
-const City=mongoose.model('city',CitySchema);
+const City = mongoose.model("city", CitySchema);
 export default City;

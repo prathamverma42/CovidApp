@@ -4,13 +4,12 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Resources from "./components/resources";
 import Admin_UserPage from "./components/Admin_UserPage";
-import AdminResourceAdd2 from "./components/AdminResourceAdd2";
 import AdminUserAdd from "./components/AdminUserAdd";
 import AdminDashboard from "./components/AdminDashboard";
 import UserDashboard from "./components/UserDashboard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import AdminResourceAdd from "./components/AdminResoureAdd";
+import AdminResourceAdd from "./components/AdminResourceAdd";
 function App() {
   const [select_state, setSelect_state] = useState("");
   const [arr, setArr] = useState([]);
@@ -25,15 +24,14 @@ function App() {
     new_state = arr.filter(
       (user) => user.city.toLowerCase() === select_state.toLowerCase()
     );
-    if(new_state===[]){
-      new_state="hello";
+    if (new_state === []) {
+      new_state = "hello";
     }
     console.log(new_state);
     setFetch_state(new_state);
     if (fetch_state !== []) {
       setFound(false);
     }
-    // console.log(new_state);
   }, [arr]);
 
   const fetchresource = async () => {
@@ -41,14 +39,10 @@ function App() {
       setArr(res.data);
     });
     setTimeout(function () {
-      if(new_state==="hello"){
+      if (new_state === "hello") {
         alert("Hello");
       }
     }, 3000);
-
-    // setTimeout(function () {
-    //   console.log("hello world"), setCheck_status(0);
-    // }, 2000);
   };
 
   return (
@@ -66,6 +60,7 @@ function App() {
               />
             )}
           />
+
           <Route
             path={`/${abc}`}
             render={(props) => (
@@ -82,42 +77,30 @@ function App() {
               />
             )}
           />
+
           <Route
             path={"/Admin-User_page"}
             render={(props) => (
               <Admin_UserPage {...props} state={select_state} />
             )}
           />
-          {/* <Route
-            path={"/AdminResourcePage"}
-            render={(props) => (
-              <AdminResourceAdd {...props} state={select_state} />
-            )}
-          /> */}
+
           <Route
-          path={"/AdminResourceAdd"}
-          render={(props) => (
-            <AdminResourceAdd2  />
-          )}
-        />
-        <Route
-        path={"/AdminUserAdd"}
-        render={(props) => (
-          <AdminUserAdd  />
-        )}
-      />
-      <Route
-      path={"/AdminDashboard"}
-      render={(props) => (
-        <AdminDashboard  />
-      )}
-    />
-    <Route
-    path={"/UserDashboard"}
-    render={(props) => (
-      <UserDashboard  />
-    )}
-  />
+            path={"/AdminResourceAdd"}
+            render={(props) => <AdminResourceAdd />}
+          />
+
+          <Route path={"/AdminUserAdd"} render={(props) => <AdminUserAdd />} />
+
+          <Route
+            path={"/AdminDashboard"}
+            render={(props) => <AdminDashboard />}
+          />
+
+          <Route
+            path={"/UserDashboard"}
+            render={(props) => <UserDashboard />}
+          />
         </Switch>
         <Footer />
       </Router>
