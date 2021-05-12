@@ -48,15 +48,30 @@ function Resources(props) {
   //   });
   //   console.log(body);
   // };
-
+  const [cityResources, setCityResources] = useState([]);
   const getResources = () => {
     setFound_resources("find-resources");
-    props.fetchresource();
+    const body = {
+      city: props.select_state,
+    };
+    // console.log()
+    axios.post("http://localhost:5000/resources", body).then((res) => {
+      // console.log(res.data);
+      if(res.data!=="No resources"){
+        setCityResources(res.data);
+      }
+      else{
+        setCheck_status(0);
+      }
+    });
+    // console.log(cityResources);
+    // props.fetchresource();
   };
-
+  // useEffect(() => {
+  //   console.log(cityResources);
+  // }, [cityResources]);
   return (
     <>
-      
       <div style={mystyle} autofocus>
         <Jumbotron fluid>
           <Container>
@@ -94,16 +109,16 @@ function Resources(props) {
                 <Col sm={6} className="mt-3">
                   {
                     <Route
-                    render={({ history }) => (
-                      <Button
-                        onClick={() => {
-                          history.replace("/Admin-User_page");
-                        }}
-                      >
-                        Add Resources
-                      </Button>
-                    )}
-                  />
+                      render={({ history }) => (
+                        <Button
+                          onClick={() => {
+                            history.replace("/Admin-User_page");
+                          }}
+                        >
+                          Add Resources
+                        </Button>
+                      )}
+                    />
                   }
                 </Col>
                 <Col sm={6} className="mt-3">
@@ -116,6 +131,19 @@ function Resources(props) {
           </>
         ) : (
           <>
+            {/* {
+            cityResources.length!==0? 
+              
+            
+
+             cityResources.map((user) => {
+              return <Cards user={user} />;
+            })
+          
+            :
+            <p></p>
+          } */}
+
             <center>
               <Button
                 onClick={(e) => {
@@ -126,7 +154,7 @@ function Resources(props) {
                 Go Back
               </Button>
               <h1>RESOURCES</h1>
-              {props.fetch_state.length === 0 ? (
+              {cityResources.length === 0 ? (
                 check_status === 1 ? (
                   <>
                     <div className="mb-2">
@@ -138,15 +166,14 @@ function Resources(props) {
                         <Spinner animation="grow" variant="light" /> LOADING
                       </Button>
                     </div>
-                    
                   </>
                 ) : (
                   <>
                     <h1>Hello world</h1>
                   </>
                 )
-              ) : (
-                props.fetch_state.map((user) => {
+               ): (
+                cityResources.map((user) => {
                   return <Cards user={user} />;
                 })
               )}

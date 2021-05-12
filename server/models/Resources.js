@@ -2,8 +2,11 @@ import mongoose from "mongoose";
 
 const ResourceSchema = mongoose.Schema({
   city: {
-    type: String,
-    required: [true, "Please add a city"],
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "city",
+    // unique: true,
+    //     type: String,
+    // required: [true, "Please add a city"],
   },
   distributor: {
     type: String,

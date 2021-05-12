@@ -4,6 +4,10 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Resources from "./components/resources";
 import Admin_UserPage from "./components/Admin_UserPage";
+import AdminResourceAdd2 from "./components/AdminResourceAdd2";
+import AdminUserAdd from "./components/AdminUserAdd";
+import AdminDashboard from "./components/AdminDashboard";
+import UserDashboard from "./components/UserDashboard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import AdminResourceAdd from "./components/AdminResoureAdd";
@@ -84,12 +88,36 @@ function App() {
               <Admin_UserPage {...props} state={select_state} />
             )}
           />
-          <Route
+          {/* <Route
             path={"/AdminResourcePage"}
             render={(props) => (
               <AdminResourceAdd {...props} state={select_state} />
             )}
-          />
+          /> */}
+          <Route
+          path={"/AdminResourceAdd"}
+          render={(props) => (
+            <AdminResourceAdd2  />
+          )}
+        />
+        <Route
+        path={"/AdminUserAdd"}
+        render={(props) => (
+          <AdminUserAdd  />
+        )}
+      />
+      <Route
+      path={"/AdminDashboard"}
+      render={(props) => (
+        <AdminDashboard  />
+      )}
+    />
+    <Route
+    path={"/UserDashboard"}
+    render={(props) => (
+      <UserDashboard  />
+    )}
+  />
         </Switch>
         <Footer />
       </Router>

@@ -8,11 +8,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
-app.use("/", Resources);
+app.use("/resources", Resources);
 app.use("/users",Users);
 
 const MONGO_URI =
-  "mongodb+srv://pverma42:prathamverma26142@cluster1.mkm8i.mongodb.net/test";
+  "mongodb+srv://pverma42:prathamverma26142@cluster1.mkm8i.mongodb.net/covidApp";
 const PORT = 5000;
 
 mongoose
