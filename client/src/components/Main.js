@@ -90,7 +90,9 @@ function Main(props) {
                 <Route
                   render={({ history }) => (
                     <Button
-                      variant="secondary"
+                    size="lg"
+                    // variant="outline-"
+                      variant="dark"
                       onClick={() => {
                         history.replace(`/${state}`);
                       }}

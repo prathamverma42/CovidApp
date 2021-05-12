@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import Cards from "./Cards";
 import {
   Jumbotron,
@@ -8,6 +9,7 @@ import {
   Form,
   Col,
   Spinner,
+  Card
 } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
@@ -93,7 +95,8 @@ function Resources(props) {
               <Route
                 render={({ history }) => (
                   <Button
-                    variant="danger"
+                  size="lg"
+                    variant="outline-success"
                     onClick={() => {
                       history.replace("/");
                     }}
@@ -107,10 +110,20 @@ function Resources(props) {
             <Container>
               <Row className="my-5 ">
                 <Col sm={6} className="mt-3">
-                  {
-                    <Route
+               <center>
+                <Card className="bg-warning">
+
+                <Card.Header as="h5">Add Resources</Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </Card.Text>
+                  <Route
                       render={({ history }) => (
                         <Button
+                        size="lg"
+                        variant="outline-dark"
                           onClick={() => {
                             history.replace("/Admin-User_page");
                           }}
@@ -119,12 +132,25 @@ function Resources(props) {
                         </Button>
                       )}
                     />
-                  }
+                </Card.Body>
+              </Card>
+              </center>
                 </Col>
                 <Col sm={6} className="mt-3">
                   <center>
-                    <Button onClick={getResources}>Find Resources</Button>
-                  </center>
+                <Card className="bg-info">
+                <Card.Header as="h5">Find Resources</Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </Card.Text>
+                  <Button size="lg" variant="outline-light"onClick={getResources}>Find Resources</Button>
+                </Card.Body>
+              </Card>
+              </center>
+                  
+                  
                 </Col>
               </Row>
             </Container>
@@ -153,7 +179,10 @@ function Resources(props) {
               >
                 Go Back
               </Button>
+              <br/>
+              <br/>
               <h1>RESOURCES</h1>
+              <br/>
               {cityResources.length === 0 ? (
                 check_status === 1 ? (
                   <>
@@ -169,7 +198,7 @@ function Resources(props) {
                   </>
                 ) : (
                   <>
-                    <h1>Hello world</h1>
+                    <h3>No resources found</h3>
                   </>
                 )
                ): (

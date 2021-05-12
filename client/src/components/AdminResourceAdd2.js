@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { Button, Container, Form, Row, Col, Table } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 function UserDashboard() {
-  const [state, setState] = useState("");
-  const [restype, setRestype] = useState("");
-  const [extrainfo, setExtrainfo] = useState("");
-  const [helpline, setHelpline] = useState("");
-  const [distributor, setDistributor] = useState("");
-  const [select_state, setSelect_state] = useState("");
+  const [state, setState] = useState('');
+  const [restype, setRestype] = useState('');
+  const [extrainfo, setExtrainfo] = useState('');
+  const [helpline, setHelpline] = useState('');
+  const [distributor, setDistributor] = useState('');
+  const [select_state, setSelect_state] = useState('');
   const [data, setData] = useState([]);
   const onsubmit = (e) => {
     console.log(data);
     e.preventDefault();
     if (
-      state !== "" &&
-      restype !== "" &&
-      extrainfo !== "" &&
-      helpline !== "" &&
-      distributor !== ""
+      state !== '' &&
+      restype !== '' &&
+      extrainfo !== '' &&
+      helpline !== '' &&
+      distributor !== ''
     ) {
       const resource = {
         city: state,
@@ -29,88 +29,90 @@ function UserDashboard() {
       };
       console.log(resource);
       axios
-        .post("http://localhost:5000/resources/add", resource)
+        .post('http://localhost:5000/resources/add', resource)
         .then((res) => {
           console.log(res.data);
         });
     } else {
-      alert("please add the sufficient fields");
+      alert('please add the sufficient fields');
     }
-    
+
     // axios
 
-
     axios
-    .post("http://localhost:5000/resources/", { city: select_state })
-    .then((res) => {
-      console.log(res.data);
-      if(res.data === "No resources"){
-        setData([]);
-      }else{
-        setData(res.data);
-      }
-      //   console.log(data.length);
-    });
+      .post('http://localhost:5000/resources/', { city: select_state })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data === 'No resources') {
+          setData([]);
+        } else {
+          setData(res.data);
+        }
+        //   console.log(data.length);
+      });
     // ==============
   };
   const deleteResource = (data) => {
     // console.log(data);
     // console.log("fnsdjk");
-    axios.delete(`http://localhost:5000/resources/${data._id}`).
-    then(res=>console.log(res.data))
+    axios
+      .delete(`http://localhost:5000/resources/${data._id}`)
+      .then((res) => console.log(res.data));
     // e.preventDefault();
     axios
-    .post("http://localhost:5000/resources/", { city: select_state })
-    .then((res) => {
-      console.log(res.data);
-      if(res.data === "No resources"){
-        setData([]);
-      }else{
-        setData(res.data);
-      }
-      //   console.log(data.length);
-    });
-
-
-
+      .post('http://localhost:5000/resources/', { city: select_state })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data === 'No resources') {
+          setData([]);
+        } else {
+          setData(res.data);
+        }
+        //   console.log(data.length);
+      });
 
     // ========
   };
   const fetchCityResources = () => {
     axios
-      .post("http://localhost:5000/resources/", { city: select_state })
+      .post('http://localhost:5000/resources/', { city: select_state })
       .then((res) => {
         console.log(res.data);
-        if(res.data === "No resources"){
+        if (res.data === 'No resources') {
           setData([]);
-        }else{
+        } else {
           setData(res.data);
         }
         //   console.log(data.length);
       });
   };
-    useEffect(() => {
-    }, [data])
+  useEffect(() => {}, [data]);
   return (
     <div>
       <Route
         render={({ history }) => (
-          <Button
-            onClick={() => {
-              history.push("/AdminDashboard");
-            }}
-          >
-            Go to 
-          </Button>
+          <center>
+            <Button
+              variant="secondary"
+              className="mt-3"
+              onClick={() => {
+                history.push('/AdminDashboard');
+              }}
+            >
+              Go to Admin Page !
+            </Button>
+          </center>
         )}
       />
-      <h1>Add Resourcces </h1>
+      <center>
+        <h1 className="mt-4">Add Resources </h1>
+      </center>
 
       <Container>
         <Row>
           <Col sm={6}>
             <Form
-              style={{ border: "1px solid grey ", padding: "25px" }}
+              style={{ border: '1px solid grey ', padding: '25px' }}
               onSubmit={onsubmit}
             >
               <Form.Group>
@@ -165,16 +167,48 @@ function UserDashboard() {
                   onChange={(e) => setHelpline(e.target.value)}
                 />
               </Form.Group>
+
               <Button variant="primary" type="submit">
                 Add Resource
               </Button>
             </Form>
           </Col>
+          
         </Row>
+        <h4 className='mt-3'>Choose City!!</h4>
+        <Row className='mt-4'>
+        <Col sm={8}>
+            <select
+              className="category"
+              // onClick={(e) => Select_state(e.target.value)}
+              onChange={(e) => {
+                setSelect_state(e.target.value);
+                // fetchCityResources();
+              }}
+            >
+              <option value="" selected>
+                choose city...
+              </option>
+              <option value="HimachalPradesh">Himachal Pradesh</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="MadhyaPradesh">Madhya Pradesh</option>
+              <option value="Haryana">Haryana</option>
+            </select>
+
+          </Col>
+          <Col sm={4}>
+          
+            <Button className="col-4"size="lg" onClick={fetchCityResources}>Fetch</Button>
+          
+            </Col>
+        </Row>
+
       </Container>
       <Container>
-        <h1>Resourcce Table</h1>
-        <select
+        <h1 className='mt-4'>Resources Table</h1>
+        {/* <select
           className="category"
           // onClick={(e) => Select_state(e.target.value)}
           onChange={(e) => {
@@ -192,9 +226,9 @@ function UserDashboard() {
           <option value="MadhyaPradesh">Madhya Pradesh</option>
           <option value="Haryana">Haryana</option>
         </select>
-        <Button onClick={fetchCityResources}>Fetch</Button>
+        <Button onClick={fetchCityResources}>Fetch</Button> */}
 
-        <Table striped bordered hover>
+        <Table striped bordered hover className='mt-3'>
           <thead>
             <tr>
               <th>Resource Type</th>
@@ -214,7 +248,9 @@ function UserDashboard() {
                     <td>{resource.extrainfo}</td>
                     <td>{resource.helpline}</td>
                     <td>
-                      <Button onClick={()=>deleteResource(resource)}>Delete</Button>
+                      <Button onClick={() => deleteResource(resource)}>
+                        Delete
+                      </Button>
                     </td>
                   </tr>
                 );
