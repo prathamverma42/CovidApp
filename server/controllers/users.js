@@ -24,3 +24,12 @@ export const getAllUser = async (req,res)=> {
     const users = await  Users.find();
     res.status(200).json(users);
 }
+export const deleteUser = async(req,res)=> {
+    // console.log(req.params.id);
+    // console.log(req.body);
+    const {id}= req.params;
+    const user = await Users.findByIdAndDelete(id);
+    // console.log(user);
+    res.status(200).json(user);
+
+}

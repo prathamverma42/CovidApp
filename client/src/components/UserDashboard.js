@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 function UserDashboard() {
   const [state, setState] = useState("");
@@ -44,17 +45,30 @@ function UserDashboard() {
     axios
       .post("http://localhost:5000/resources/", { city: select_state })
       .then((res) => {
-          console.log(res.data);
+        console.log(res.data);
+        if(res.data === "No resources"){
+          setData([]);
+        }else{
+          setData(res.data);
+        }
         //   console.log(data.length);
-        //   setData(res.data);
       });
   };
-  //   useEffect(() => {
-  //      axios.get('http://localhost:5000/resources/all')
-  //      .then(res=>{setData(res.data)})
-  //   }, [])
+    useEffect(() => {
+    }, [])
   return (
     <div>
+      <Route
+        render={({ history }) => (
+          <Button
+            onClick={() => {
+              history.push("/Admin-User_page");
+            }}
+          >
+            Logout
+          </Button>
+        )}
+      />
       <h1>User dash</h1>
 
       <Container>
@@ -130,7 +144,7 @@ function UserDashboard() {
           // onClick={(e) => Select_state(e.target.value)}
           onChange={(e) => {
             setSelect_state(e.target.value);
-            fetchCityResources();
+            // fetchCityResources();
           }}
         >
           <option value="" selected>
@@ -143,6 +157,7 @@ function UserDashboard() {
           <option value="MadhyaPradesh">Madhya Pradesh</option>
           <option value="Haryana">Haryana</option>
         </select>
+        <Button onClick={fetchCityResources}>Fetch</Button>
 
         <Table striped bordered hover>
           <thead>
@@ -155,25 +170,23 @@ function UserDashboard() {
             </tr>
           </thead>
           <tbody>
-            {   
-            data.length!==0?(
-            
-            data.map((resource) => {
-              return (
-                <tr>
-                  <td>{resource.restype}</td>
-                  <td>{resource.distributor}</td>
-                  <td>{resource.extrainfo}</td>
-                  <td>{resource.helpline}</td>
-                  <td>
-                    <Button onClick={deleteResource}>Delete</Button>
-                  </td>
-                </tr>
-              );
-            })
-            ):
-            <p></p>
-        }
+            {data.length !== 0 ? (
+              data.map((resource) => {
+                return (
+                  <tr>
+                    <td>{resource.restype}</td>
+                    <td>{resource.distributor}</td>
+                    <td>{resource.extrainfo}</td>
+                    <td>{resource.helpline}</td>
+                    <td>
+                      <Button onClick={deleteResource}>Delete</Button>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <p>No Resources</p>
+            )}
           </tbody>
         </Table>
       </Container>

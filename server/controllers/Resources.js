@@ -53,19 +53,20 @@ export const getCityResources = async (req,res) => {
 }
 
 export const deleteResource = async (req,res)=> {
-  
-  const cityId = await City.find({city : req.body.city});
+  // console.log(req.body);
+  // const cityId = await City.findById(req.body.city);
 
-  if(cityId.length === 0){
-    res.status(200).json("No resources");
-  }
-  else{
-    req.body.city = cityId[0]._id;
+  // if(cityId.length === 0){
+  //   res.status(200).json("No resources");
+  // }
+  // else{
+    // req.body.city = cityId[0]._id;
     // console.log(cityId[0]._id)
-    const resources = await Resource.find(req.body);
+    // const resources = await Resource.find(req.body);
     // console.log(resources)
-    const del = await Resource.findByIdAndDelete(resources[0]._id);
+    // console.log(req)
+    const del = await Resource.findByIdAndDelete(req.params.id);
 
     res.status(200).json({data : []});
-  }
+  // }
 }

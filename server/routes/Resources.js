@@ -12,6 +12,6 @@ router.get("/all", getResources);
 // router.get("/:id", getResource);
 router.post("/add", createResource);
 router.post("/",getCityResources);
-router.delete('/',deleteResource);
+router.delete('/:id',deleteResource);
 
 export default router;
