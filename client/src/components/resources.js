@@ -6,12 +6,11 @@ import {
   Container,
   Button,
   Row,
-  Form,
   Col,
   Spinner,
   Card,
 } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Route} from 'react-router-dom';
 import axios from "axios";
 
 function Resources(props) {

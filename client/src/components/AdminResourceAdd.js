@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Route} from 'react-router-dom';
+
 import axios from "axios";
 
 function AdminResourceAdd() {

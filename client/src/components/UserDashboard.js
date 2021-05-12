@@ -59,7 +59,9 @@ function UserDashboard() {
         render={({ history }) => (
           <center>
             <Button
-              className="mt-4"
+              className="mt-4 col-2"
+              size="lg"
+              variant="outline-danger"
               onClick={() => {
                 history.push("/Admin-User_page");
               }}
@@ -69,7 +71,7 @@ function UserDashboard() {
           </center>
         )}
       />
-      <center>
+      <center className="mt-4 mb-4">
         <h1>User Dashboard!!</h1>
       </center>
 
@@ -160,9 +162,7 @@ function UserDashboard() {
             </select>
           </Col>
           <Col sm={4}>
-            <Button className="col-4" size="lg" onClick={fetchCityResources}>
-              Fetch
-            </Button>
+            <Button onClick={fetchCityResources}>Fetch Resources</Button>
           </Col>
         </Row>
       </Container>

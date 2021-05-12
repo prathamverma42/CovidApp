@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Resources from "./resources.js";
+import { Button, Container, Form } from "react-bootstrap";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Route} from 'react-router-dom';
 import axios from "axios";
 function Admin_UserPage(props) {
 

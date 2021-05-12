@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Main.css";
 import { Route } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -64,7 +64,14 @@ function Main(props) {
         <Row>
           <Col sm={6}>
             <div className="state-from-div">
-              <h1>
+              <h1
+                style={{
+                  fontFamily: "Alegreya SC",
+                  fontWeight: "400",
+                  textShadow: "2px 2px 2px ",
+                  fontSize: "4rem",
+                }}
+              >
                 <center>Find a State!</center>
               </h1>
               <span className="state-span">Choose a State</span>

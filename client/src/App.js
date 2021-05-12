@@ -15,7 +15,7 @@ function App() {
   const [arr, setArr] = useState([]);
   const [fetch_state, setFetch_state] = useState([]);
   const [found, setFound] = useState(true);
-  const [admin, setAdmin] = useState("");
+  // const [admin, setAdmin] = useState("");
 
   let abc = select_state;
   let new_state = [];
@@ -73,7 +73,7 @@ function App() {
                 select_state={select_state}
                 fetchresource={fetchresource}
                 setSelect_state={setSelect_state}
-                setAdmin={setAdmin}
+                // setAdmin={setAdmin}
               />
             )}
           />
