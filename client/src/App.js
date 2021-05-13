@@ -7,6 +7,7 @@ import Admin_UserPage from "./components/Admin_UserPage";
 import AdminUserAdd from "./components/AdminUserAdd";
 import AdminDashboard from "./components/AdminDashboard";
 import UserDashboard from "./components/UserDashboard";
+import UserRegistration from "./components/UserRegistration";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import AdminResourceAdd from "./components/AdminResourceAdd";
@@ -100,6 +101,11 @@ function App() {
           <Route
             path={"/UserDashboard"}
             render={(props) => <UserDashboard />}
+          />
+          
+          <Route
+            path={"/UserRegistration"}
+            render={(props) => <UserRegistration />}
           />
         </Switch>
         <Footer />

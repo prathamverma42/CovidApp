@@ -1,0 +1,19 @@
+.cards:hover {
+  transform: translateY(-10px);
+  transition: ease all 0.5s;
+}
+.cards {
+  transition: ease all 0.2s;
+  /* font-family: 'Courier New', Courier, monospace; */
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+}
+/* .admin_cards{
+    background-color: mediumseagreen;
+}
+.admin_cards:hover {
+  background-color: whitesmoke;
+  border-radius: 1px solid black;
+} */

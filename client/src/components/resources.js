@@ -10,7 +10,7 @@ import {
   Spinner,
   Card,
 } from "react-bootstrap";
-import {Route} from 'react-router-dom';
+import { Route } from "react-router-dom";
 import axios from "axios";
 
 function Resources(props) {
@@ -130,13 +130,15 @@ function Resources(props) {
           <>
             <center>
               <Button
-              className="mt-2 mb-4 col-1 "
+                className="mt-2 mb-4 col-1"
+                variant="outline-warning"
+                size="lg"
                 onClick={(e) => {
                   setFound_resources("");
                   props.setFetch_state([]);
                 }}
               >
-                GO BACK
+                Go Back
               </Button>
               <h1>RESOURCES</h1>
               {cityResources.length === 0 ? (
@@ -158,9 +160,17 @@ function Resources(props) {
                   </>
                 )
               ) : (
-                cityResources.map((user) => {
-                  return <Cards user={user} />;
-                })
+                <Container>
+                <Row>
+                  {cityResources.map((user) => {
+                    return (
+                      <Col className="col-6">
+                        <Cards user={user} />
+                      </Col>
+                    );
+                  })}
+                </Row>
+                </Container>
               )}
             </center>
           </>

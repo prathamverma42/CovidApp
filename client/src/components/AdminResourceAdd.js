@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {Route} from 'react-router-dom';
-
+import { Route } from "react-router-dom";
+import resource from "../assets/post1.svg";
 import axios from "axios";
 
 function AdminResourceAdd() {
@@ -86,7 +86,8 @@ function AdminResourceAdd() {
         render={({ history }) => (
           <center>
             <Button
-              variant="secondary"
+              size="lg"
+              variant="outline-info"
               className="mt-3"
               onClick={() => {
                 history.push("/AdminDashboard");
@@ -98,14 +99,31 @@ function AdminResourceAdd() {
         )}
       />
       <center>
-        <h1 className="mt-4">Add Resources </h1>
+        <h1
+          style={{
+            fontFamily: "Alegreya SC",
+            fontWeight: "400",
+            textShadow: "2px 2px 2px ",
+            fontSize: "3.5rem",
+          }}
+          className="mt-4"
+        >
+          Add Resources{" "}
+        </h1>
       </center>
 
       <Container>
         <Row>
           <Col sm={6}>
             <Form
-              style={{ border: "1px solid grey ", padding: "25px" }}
+              style={{
+                border: "1px solid grey ",
+                padding: "25px",
+                border: "1px solid grey ",
+                padding: "25px",
+                fontFamily: "'Courier New', Courier, monospace",
+                fontWeight: "bold",
+              }}
               onSubmit={onsubmit}
             >
               <Form.Group>
@@ -166,8 +184,25 @@ function AdminResourceAdd() {
               </Button>
             </Form>
           </Col>
+          <Col sm={6} className="mt-5">
+            <center>
+              <img src={resource} style={{ width: "90%" }} />
+            </center>
+          </Col>
         </Row>
-        <h4 className="mt-3">Choose City!!</h4>
+      </Container>
+      <Container>
+        <h1
+          className="mt-4"
+          style={{
+            fontFamily: "Alegreya SC",
+            fontWeight: "400",
+            textShadow: "2px 2px 2px ",
+            fontSize: "3.5rem",
+          }}
+        >
+          Resources Table
+        </h1>
         <Row className="mt-4">
           <Col sm={8}>
             <select
@@ -188,17 +223,24 @@ function AdminResourceAdd() {
             </select>
           </Col>
           <Col sm={4}>
-            <Button  onClick={fetchCityResources}>
+            <Button onClick={fetchCityResources} variant="secondary">
               Fetch Resources
             </Button>
           </Col>
         </Row>
-      </Container>
-      <Container>
-        <h1 className="mt-4">Resources Table</h1>
-
-        <Table striped bordered hover className="mt-3">
-          <thead>
+        <Table
+          striped
+          // bordered
+          hover
+          className="mt-3"
+          style={{
+            // border: "1px solid grey ",
+            padding: "25px",
+            fontFamily: "'Courier New', Courier, monospace",
+            fontWeight: "bold",
+          }}
+        >
+          <thead className="bg-dark text-white">
             <tr>
               <th>Resource Type</th>
               <th>Distributor</th>
@@ -225,7 +267,9 @@ function AdminResourceAdd() {
                 );
               })
             ) : (
-              <p>No Resources</p>
+              <>
+                <h2 className="mt-3 text-danger">No Resources Found</h2>
+              </>
             )}
           </tbody>
         </Table>

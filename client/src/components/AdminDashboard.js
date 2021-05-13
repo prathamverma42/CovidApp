@@ -1,19 +1,36 @@
-import React from 'react';
-import { Button, Container, Row, Col, Card } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import React from "react";
+import { Button, Container, Row, Col, Card } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function AdminDashboard() {
   return (
     <div>
       <center>
-        <h1 className='mt-5'>Welcome to the Admin Page !!!</h1>
-
-       
-        <Container className='mt-5'>
+        <h1
+          style={{
+            fontFamily: "Alegreya SC",
+            fontWeight: "400",
+            textShadow: "2px 2px 2px ",
+            fontSize: "3.5rem",
+          }}
+          className="mt-5"
+        >
+          Welcome to the Admin Page !!!
+        </h1>
+        <Container className="mt-5">
           <Row>
             <Col>
-              <Card className="bg-info">
-                <Card.Header as="h5">Add Users</Card.Header>
+              <Card
+                className="bg-warning"
+                style={{
+                  border: "1px solid grey ",
+                  padding: "25px",
+                  fontFamily: "'Courier New', Courier, monospace",
+                  fontWeight: "bold",
+                }}
+              >
+                <Card.Header as="h4" style={{ fontWeight: "800" }}>
+                  Add Users
+                </Card.Header>
                 <Card.Body>
                   <Card.Text>
                     With supporting text below as a natural lead-in to
@@ -22,10 +39,10 @@ function AdminDashboard() {
                   <Route
                     render={({ history }) => (
                       <Button
-                      className="col-3"
-                      variant="outline-dark"
+                        className="col-3 mt-2"
+                        variant="outline-dark"
                         onClick={() => {
-                          history.push('/AdminUserAdd');
+                          history.push("/AdminUserAdd");
                         }}
                       >
                         ADD USER
@@ -36,8 +53,18 @@ function AdminDashboard() {
               </Card>
             </Col>
             <Col>
-              <Card style={{backgroundColor:'#18BC9C'}}>
-                <Card.Header as="h5">Add Resources</Card.Header>
+              <Card
+                className="bg-info"
+                style={{
+                  border: "1px solid grey ",
+                  padding: "25px",
+                  fontFamily: "'Courier New', Courier, monospace",
+                  fontWeight: "bold",
+                }}
+              >
+                <Card.Header as="h4" style={{ fontWeight: "800" }}>
+                  Add Resources
+                </Card.Header>
                 <Card.Body>
                   <Card.Text>
                     With supporting text below as a natural lead-in to
@@ -46,9 +73,10 @@ function AdminDashboard() {
                   <Route
                     render={({ history }) => (
                       <Button
-                      variant="outline-dark"
+                        className="mt-2"
+                        variant="outline-dark"
                         onClick={() => {
-                          history.push('/AdminResourceAdd');
+                          history.push("/AdminResourceAdd");
                         }}
                       >
                         ADD RESOURCE
@@ -62,12 +90,11 @@ function AdminDashboard() {
           <Route
             render={({ history }) => (
               <Button
-
-              variant="outline-danger"
+                variant="outline-danger"
                 className="m-5 col-3"
                 size="lg"
                 onClick={() => {
-                  history.push('/Admin-User_page');
+                  history.push("/Admin-User_page");
                 }}
               >
                 Logout
@@ -76,9 +103,8 @@ function AdminDashboard() {
           />
         </Container>
       </center>
-      
     </div>
   );
 }
 
-export default AdminDashboard; 
+export default AdminDashboard;
