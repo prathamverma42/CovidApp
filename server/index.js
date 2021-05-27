@@ -4,6 +4,7 @@ import cors from "cors";
 
 import Resources from "./routes/Resources.js";
 import Users from "./routes/users.js";
+import NewUsers from "./routes/userRegister.js";
 
 const app = express();
 app.use(cors());
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use("/resources", Resources);
 app.use("/users", Users);
+app.use("/newUsers", NewUsers);
 
 const MONGO_URI =
   "mongodb+srv://pverma42:prathamverma26142@cluster1.mkm8i.mongodb.net/covidApp";

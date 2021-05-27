@@ -87,6 +87,43 @@ function AdminDashboard() {
               </Card>
             </Col>
           </Row>
+          <Row className="mt-5">
+            
+            <Col>
+              <Card
+                className="bg-success col-6"
+                style={{
+                  border: "1px solid grey ",
+                  padding: "25px",
+                  fontFamily: "'Courier New', Courier, monospace",
+                  fontWeight: "bold",
+                }}
+              >
+                <Card.Header as="h4" style={{ fontWeight: "800" }}>
+                  New Users Registered
+                </Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </Card.Text>
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className="col-4 mt-2"
+                        variant="outline-dark"
+                        onClick={() => {
+                          history.push("/AdminUserRegistration");
+                        }}
+                      >
+                        ADD NEW USER
+                      </Button>
+                    )}
+                  />
+                </Card.Body>
+              </Card>
+            </Col> 
+          </Row>
           <Route
             render={({ history }) => (
               <Button
