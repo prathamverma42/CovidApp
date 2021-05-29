@@ -136,7 +136,6 @@ function Admin_UserPage(props) {
                 <br />
                 <Card
                   border="primary"
-                  // className="my-5"
                   style={{ width: "18rem" }}
                 >
                   <Card.Header>Contact Info</Card.Header>
@@ -150,7 +149,7 @@ function Admin_UserPage(props) {
                       render={({ history }) => (
                         <Button
                           type="submit"
-                          className="col-3"
+                          className="col-6"
                           variant="outline-info"
                           onClick={() => {
                             history.replace("/UserRegistration");

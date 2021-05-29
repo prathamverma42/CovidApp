@@ -34,7 +34,12 @@ function AdminResourceAdd() {
       axios
         .post("http://localhost:5000/resources/add", resource)
         .then((res) => {
-          // console.log(res.data);
+          setRestype("");
+          setExtrainfo("");
+          setHelpline("");
+          setDistributor("");
+          setState("");
+          alert("Successfully added");
         });
     } else {
       alert("please add the sufficient fields");
@@ -127,24 +132,49 @@ function AdminResourceAdd() {
               onSubmit={onsubmit}
             >
               <Form.Group>
-                <Form.Label>Resource Type</Form.Label>
+                <Form.Label>Select State </Form.Label>
                 <Form.Control
                   as="select"
+                  value={state}
                   onChange={(e) => setState(e.target.value)}
                 >
                   <option value="">Choose...</option>
-                  <option value="Punjab">Punjab</option>
-                  <option value="Haryana">haryana</option>
-                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="AndhraPradesh">Andhra Pradesh</option>
+                  <option value="ArunachalPradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chattisgarh">Chattisgarh</option>
                   <option value="Delhi">Delhi</option>
-                  <option value="HimachalPradesh">HimachalPradesh</option>
+                  <option value="Goa">Goa</option>
                   <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="HimachalPradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerela">Kerela</option>
+                  <option value="MadhyaPradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="TamilNadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="UttarPradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="WestBengal">West Bengal</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Resource Type</Form.Label>
                 <Form.Control
                   as="select"
+                  value={restype}
                   onChange={(e) => setRestype(e.target.value)}
                 >
                   <option value="">Choose...</option>
@@ -157,6 +187,7 @@ function AdminResourceAdd() {
                 <Form.Label>Distributor</Form.Label>
                 <Form.Control
                   type="text"
+                  value={distributor}
                   placeholder="Enter Distributor"
                   onChange={(e) => setDistributor(e.target.value)}
                 />
@@ -165,6 +196,7 @@ function AdminResourceAdd() {
                 <Form.Label>Extra Info</Form.Label>
                 <Form.Control
                   type="text"
+                  value={extrainfo}
                   placeholder="Extra Info"
                   onChange={(e) => setExtrainfo(e.target.value)}
                 />
@@ -174,6 +206,7 @@ function AdminResourceAdd() {
                 <Form.Label>Helpline</Form.Label>
                 <Form.Control
                   type="number"
+                  value={helpline}
                   placeholder="Helpline"
                   onChange={(e) => setHelpline(e.target.value)}
                 />
@@ -210,22 +243,44 @@ function AdminResourceAdd() {
               onChange={(e) => {
                 setSelect_state(e.target.value);
               }}
+              onClick={fetchCityResources}
             >
-              <option value="" selected>
-                choose city...
-              </option>
-              <option value="HimachalPradesh">Himachal Pradesh</option>
-              <option value="Punjab">Punjab</option>
+              <option value="">Choose...</option>
+              <option value="AndhraPradesh">Andhra Pradesh</option>
+              <option value="ArunachalPradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chattisgarh">Chattisgarh</option>
               <option value="Delhi">Delhi</option>
-              <option value="Maharashtra">Maharashtra</option>
-              <option value="MadhyaPradesh">Madhya Pradesh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
               <option value="Haryana">Haryana</option>
+              <option value="HimachalPradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerela">Kerela</option>
+              <option value="MadhyaPradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="TamilNadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="UttarPradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="WestBengal">West Bengal</option>
             </select>
           </Col>
           <Col sm={4}>
-            <Button onClick={fetchCityResources} variant="secondary">
+            {/* <Button onClick={fetchCityResources} variant="secondary">
               Fetch Resources
-            </Button>
+            </Button> */}
           </Col>
         </Row>
         <Table

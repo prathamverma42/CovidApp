@@ -128,22 +128,27 @@ function Resources(props) {
           </>
         ) : (
           <>
-            <center>
-              <Button
-                className="mt-2 mb-4 col-1"
-                variant="outline-warning"
-                size="lg"
-                onClick={(e) => {
-                  setFound_resources("");
-                  props.setFetch_state([]);
-                }}
-              >
-                Go Back
-              </Button>
-              <h1>RESOURCES</h1>
-              {cityResources.length === 0 ? (
-                check_status === 1 ? (
-                  <>
+            {/* <center> */}
+            <div>
+              <center>
+                <Button
+                  className="mt-2 mb-4 col-1"
+                  variant="outline-dark"
+                  size="lg"
+                  onClick={(e) => {
+                    setFound_resources("");
+                    props.setFetch_state([]);
+                  }}
+                >
+                  Go Back
+                </Button>
+                <h1>RESOURCES</h1>
+              </center>
+            </div>
+            {cityResources.length === 0 ? (
+              check_status === 1 ? (
+                <>
+                  <center>
                     <div className="mb-2">
                       <Button
                         variant="info"
@@ -153,14 +158,17 @@ function Resources(props) {
                         <Spinner animation="grow" variant="light" /> LOADING
                       </Button>
                     </div>
-                  </>
-                ) : (
-                  <>
-                    <h3>No resources found</h3>
-                  </>
-                )
+                  </center>
+                </>
               ) : (
-                <Container>
+                <>
+                  <center>
+                    <h3>No resources found</h3>
+                  </center>
+                </>
+              )
+            ) : (
+              <Container>
                 <Row>
                   {cityResources.map((user) => {
                     return (
@@ -170,9 +178,9 @@ function Resources(props) {
                     );
                   })}
                 </Row>
-                </Container>
-              )}
-            </center>
+              </Container>
+            )}
+            {/* </center> */}
           </>
         )}
       </div>
