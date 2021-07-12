@@ -12,33 +12,33 @@
 <!-- #### Example: -->
 <!-- <h4>OnB</h4> -->
 <!-- This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress. -->
-<h3>Project Idea:</h3>
+<h3>Project Idea :bulb:</h3>
 <p>
 We are working on prividing an adequate and verified resources related to COVID at one place.
 </p>
-## Project Screen Shot(s)
+:camera: Project Screen Shot(s) 
 
 <!-- #### Example: -->
 
-<h3>MAIN Page</h3>
+<h3>Main Page:</h3>
 <p align="center" >
   <img src="./client/src/assets/1.png" width="100%">
   <img src="./client/src/assets/2.png" width="100%">
   <img src="./client/src/assets/3.png" width="100%">
 </p>
 
-<h3>Resources Page</h3>
+<h3>Resources Page:</h3>
 <p align="center" >
   <img src="./client/src/assets/4.png" width="100%">
   <img src="./client/src/assets/5.png" width="100%">
 </p>
 
-<h3>Admin Page</h3>
+<h3>Admin Page:</h3>
 <p align="center" >
   <img src="./client/src/assets/6.png" width="100%">
 </p>
 
-<h3>Tech Stack:</h3>
+<h3>Tech Stack :exclamation:</h3>
 <p>Html, Css, Reactjs, Javascript, Bootstrap, Nodejs, Express, MongoDB
 </p>
 
@@ -51,7 +51,7 @@ This project can be used by the people to find the required resources of the COV
 </p>
 
 <p align="center">
-  Show some love :blue_heart: and Star ⭐️ the Repository to support the project.
+  Show some love :blue_heart: and Star :star: the Repository to support the project.
 </p>
 
 ## :rocket: Installation and Setup Instructions
