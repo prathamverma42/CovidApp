@@ -1,20 +1,17 @@
 import React from "react";
 import "./Cards.css";
 import { Card } from "react-bootstrap";
-import { AccessAlarm, Call, Info, EmojiPeople } from "@material-ui/icons";
+import { Call, Info, EmojiPeople } from "@material-ui/icons";
 function Cards(props) {
-  let bg_color="";
-  if(props.user.restype==="Plasma"){
-    bg_color="warning"
-  }
-  else if(props.user.restype==="Oxygen"){
-    bg_color="primary"
-  }
-  else if(props.user.restype==="Injection")
-  {
-    bg_color="danger"
-  }else{
-    bg_color="dark"
+  let bg_color = "";
+  if (props.user.restype === "Plasma") {
+    bg_color = "warning";
+  } else if (props.user.restype === "Oxygen") {
+    bg_color = "primary";
+  } else if (props.user.restype === "Injection") {
+    bg_color = "danger";
+  } else {
+    bg_color = "dark";
   }
   return (
     <div>

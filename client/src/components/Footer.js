@@ -2,6 +2,9 @@ import React from "react";
 import "./Footer.css";
 import img_bg from "../assets/map-bg.png";
 import { Container, Row, Col } from "react-bootstrap";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import PhoneIcon from "@material-ui/icons/Phone";
+import MailIcon from "@material-ui/icons/Mail";
 
 function Footer() {
   return (
@@ -17,7 +20,7 @@ function Footer() {
                 <div className="p-tag">
                   <p>What we do</p>
                   <p>Media</p>
-                  <p>Travel Advice</p>
+                  {/* <p>Travel Advice</p> */}
                   <p>Protection</p>
                   <p>Care</p>
                 </div>
@@ -36,16 +39,45 @@ function Footer() {
                 </div>
               </div>
             </Col>
-            <Col sm={3}>
+            <Col sm={3} style={{ lineHeight: "35px" }}>
               <div className="content">
                 <h3>
                   <strong>CONTACT US</strong>
                 </h3>
                 <div>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Nesciunt doloremque nulla asperiores soluta natus ad, ut
-                  doloribus at fugit repellendus ipsam, architecto a assumenda
-                  quod delectus quam ab odit harum?
+                  <div>
+                    <Row>
+                      <Col sm={1}>
+                        <LocationOnIcon fontSize="medium" color="light" />
+                      </Col>
+                      <Col sm={8}>
+                        {" "}
+                        <span>Location</span>
+                      </Col>
+                    </Row>
+                  </div>
+                  <div>
+                    <Row>
+                      <Col sm={1}>
+                        <PhoneIcon fontSize="medium" color="light" />
+                      </Col>
+                      <Col sm={8}>
+                        {" "}
+                        <span>Call +01234567890</span>
+                      </Col>
+                    </Row>
+                  </div>
+                  <div>
+                    <Row>
+                      <Col sm={1}>
+                        <MailIcon fontSize="medium" color="light" />
+                      </Col>
+                      <Col sm={8}>
+                        {" "}
+                        <span>demo@gmail.com</span>
+                      </Col>
+                    </Row>
+                  </div>
                 </div>
               </div>
             </Col>
