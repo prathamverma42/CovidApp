@@ -22,9 +22,9 @@ We are working on prividing an adequate and verified resources related to COVID 
 
 <h3>MAIN Page</h3>
 <p align="center" >
-  <img src="./src/assets/1.png" width="100%" title="hover text">
-  <img src="./src/assets/2.png" width="100%" title="hover text">
-  <img src="./src/assets/3.png" width="100%" title="hover text">
+  <img src="./client/src/assets/1.png" width="100%" title="hover text">
+  <img src="./client/src/assets/2.png" width="100%" title="hover text">
+  <img src="./client/src/assets/3.png" width="100%" title="hover text">
   <!-- <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text"> -->
 </p>
 
