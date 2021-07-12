@@ -51,7 +51,7 @@ This project can be used by the people to find the required resources of the COV
 </p>
 
 <p align="center">
-  Show some love 💜 and Star ⭐️ the Repository to support the project.
+  Show some love :blue_heart: and Star ⭐️ the Repository to support the project.
 </p>
 
 ## :rocket: Installation and Setup Instructions
@@ -68,4 +68,4 @@ You can get the College After Covid Web App up and running on your localhost in 
 4. **To Visit App:**
 ```localhost:3000/```
 
-## :red_heart: Thanks
+## :heart: Thanks
