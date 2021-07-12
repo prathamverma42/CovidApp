@@ -1,5 +1,5 @@
 <!-- ## Project Name & Pitch -->
-<h1>Covid saadhan</h1>
+<h1>Covid Resources</h1>
 <!-- #### Example: -->
 
 <!-- TweetWorld  -->
