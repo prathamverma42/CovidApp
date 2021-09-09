@@ -5,7 +5,8 @@ import {
   checkUser,
   getAllUser,
   deleteUser,
-  addRegisteredUser
+  addRegisteredUser,
+  checkUniqueEmail,
 } from "../controllers/users.js";
 
 const router = express.Router();
@@ -18,6 +19,8 @@ router.post("/", checkUser);
 
 router.delete("/:id", deleteUser);
 
-router.post("/addRegisteredUser/:id",addRegisteredUser);
+router.post("/addRegisteredUser/:id", addRegisteredUser);
+
+router.post("/checkunique", checkUniqueEmail);
 
 export default router;

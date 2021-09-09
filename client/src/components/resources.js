@@ -132,7 +132,7 @@ function Resources(props) {
             <div>
               <center>
                 <Button
-                  className="mt-2 mb-4 col-1"
+                  className="mt-2 mb-4 "
                   variant="outline-dark"
                   size="lg"
                   onClick={(e) => {
@@ -163,7 +163,7 @@ function Resources(props) {
               ) : (
                 <>
                   <center>
-                    <h3>No resources found</h3>
+                    <h2 style={{ color: "red" }}>No resources found</h2>
                   </center>
                 </>
               )
@@ -172,7 +172,7 @@ function Resources(props) {
                 <Row>
                   {cityResources.map((user) => {
                     return (
-                      <Col className="col-6">
+                      <Col sm={6}>
                         <Cards user={user} />
                       </Col>
                     );

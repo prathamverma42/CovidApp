@@ -5,6 +5,7 @@ import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
 import axios from "axios";
 import user from "../assets/user1.svg";
 
+import GoogleLogin from "react-google-login";
 function AdminUserAdd() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -49,6 +50,11 @@ function AdminUserAdd() {
 
   const deleteUser = (id) => {
     axios.delete(`http://localhost:5000/users/${id}`).then((res) => {});
+  };
+
+  const responseGoogle = (response) => {
+    setEmail(response.profileObj.email);
+    setName(response.profileObj.name);
   };
 
   return (
@@ -101,6 +107,7 @@ function AdminUserAdd() {
                 <Form.Control
                   type="text"
                   placeholder="Enter Name"
+                  disabled="true"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -118,6 +125,7 @@ function AdminUserAdd() {
               <Form.Group>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
+                  disabled="true"
                   type="email"
                   placeholder="Enter Email"
                   value={email}
@@ -136,14 +144,23 @@ function AdminUserAdd() {
                   <option value="Admin">Admin</option>
                 </Form.Control>
               </Form.Group>
+              <p>
+                <GoogleLogin
+                  clientId="1015940765280-3jmvucq2gf67o59eigo1148s5n5r70hm.apps.googleusercontent.com"
+                  buttonText="Sign in with Google"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+              </p>
               <Button className="col-3" variant="primary" type="submit">
                 {`Add ${type}`}
               </Button>
             </Form>
           </Col>
-          <Col sm={6}>
+          <Col sm={6} className="mt-5">
             <div>
-              <img src={user} style={{ height: "25rem" }} />
+              <img src={user} style={{ height: "20rem" }} />
             </div>
           </Col>
         </Row>
@@ -166,7 +183,7 @@ function AdminUserAdd() {
           className="mb-5"
           style={{
             border: "1px solid grey ",
-            padding: "25px",
+            // padding: "25px",
             fontFamily: "'Courier New', Courier, monospace",
             fontWeight: "bold",
           }}

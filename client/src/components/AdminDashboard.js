@@ -20,7 +20,7 @@ function AdminDashboard() {
           <Row>
             <Col>
               <Card
-                className="bg-warning"
+                className="bg-warning mt-5"
                 style={{
                   border: "1px solid grey ",
                   padding: "25px",
@@ -39,7 +39,7 @@ function AdminDashboard() {
                   <Route
                     render={({ history }) => (
                       <Button
-                        className="col-3 mt-2"
+                        className="mt-2"
                         variant="outline-dark"
                         onClick={() => {
                           history.push("/AdminUserAdd");
@@ -54,7 +54,7 @@ function AdminDashboard() {
             </Col>
             <Col>
               <Card
-                className="bg-info"
+                className="bg-info mt-5"
                 style={{
                   border: "1px solid grey ",
                   padding: "25px",
@@ -88,10 +88,9 @@ function AdminDashboard() {
             </Col>
           </Row>
           <Row className="mt-5">
-            
-            <Col>
+            <Col sm={6}>
               <Card
-                className="bg-success col-6"
+                className="bg-success "
                 style={{
                   border: "1px solid grey ",
                   padding: "25px",
@@ -110,7 +109,7 @@ function AdminDashboard() {
                   <Route
                     render={({ history }) => (
                       <Button
-                        className="col-4 mt-2"
+                        className="mt-2"
                         variant="outline-dark"
                         onClick={() => {
                           history.push("/AdminUserRegistration");
@@ -122,7 +121,7 @@ function AdminDashboard() {
                   />
                 </Card.Body>
               </Card>
-            </Col> 
+            </Col>
           </Row>
           <Route
             render={({ history }) => (

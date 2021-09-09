@@ -33,8 +33,8 @@ export const deleteUser = async (req, res) => {
 
 export const addRegisteredUser = async (req, res) => {
   console.log(req.params.id);
-  
-  const newuser =await NewUsers.findByIdAndDelete(req.params.id);
+
+  const newuser = await NewUsers.findByIdAndDelete(req.params.id);
   // console.log(newuser[0].email);
   console.log(newuser);
   // await delete newuser._id;
@@ -43,10 +43,21 @@ export const addRegisteredUser = async (req, res) => {
     email: newuser.email,
     password: newuser.password,
     contact: newuser.contact,
-    type: "User"
-  }
+    type: "User",
+  };
   console.log(newuserdata);
-  
+
   const user = await Users.create(newuserdata);
-  res.status(200).json({success: true,data: user});
+  res.status(200).json({ success: true, data: user });
+};
+
+export const checkUniqueEmail = async (req, res) => {
+  const user = await Users.find({
+    email: req.body.email,
+  });
+  if (user.length !== 0) {
+    res.status(200).json({ success: true });
+  } else {
+    res.status(200).json({ success: false });
+  }
 };

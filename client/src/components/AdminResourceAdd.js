@@ -4,6 +4,7 @@ import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
 import { Route } from "react-router-dom";
 import resource from "../assets/post1.svg";
 import axios from "axios";
+// import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 
 function AdminResourceAdd() {
   const [state, setState] = useState("");
@@ -122,8 +123,6 @@ function AdminResourceAdd() {
           <Col sm={6}>
             <Form
               style={{
-                border: "1px solid grey ",
-                padding: "25px",
                 border: "1px solid grey ",
                 padding: "25px",
                 fontFamily: "'Courier New', Courier, monospace",
@@ -289,8 +288,10 @@ function AdminResourceAdd() {
           hover
           className="mt-3"
           style={{
-            // border: "1px solid grey ",
+            maxWidth: "100%",
+            border: "1px solid grey ",
             padding: "25px",
+            fontSize: "1rem",
             fontFamily: "'Courier New', Courier, monospace",
             fontWeight: "bold",
           }}

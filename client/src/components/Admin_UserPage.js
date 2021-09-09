@@ -3,6 +3,8 @@ import { Button, Container, Form, Row, Col, Card } from "react-bootstrap";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Route } from "react-router-dom";
 import axios from "axios";
+import GoogleLogin from "react-google-login";
+
 function Admin_UserPage(props) {
   // Hooks for the login form
   const [loginemail, setLoginemail] = useState("");
@@ -38,6 +40,10 @@ function Admin_UserPage(props) {
   useEffect(() => {
     // console.log(checklogin);
   }, [checklogin, loginpassword, loginemail]);
+
+  const responseGoogle = (response) => {
+    setLoginemail(response.profileObj.email);
+  };
 
   return (
     <div>
@@ -85,6 +91,7 @@ function Admin_UserPage(props) {
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       placeholder="Enter your email"
+                      // disabled="true"
                       onChange={(e) => setLoginemail(e.target.value)}
                       value={loginemail}
                     ></Form.Control>
@@ -97,6 +104,15 @@ function Admin_UserPage(props) {
                       value={loginpassword}
                     ></Form.Control>
                   </Form.Group>
+                  <p>
+                    <GoogleLogin
+                      clientId="1015940765280-3jmvucq2gf67o59eigo1148s5n5r70hm.apps.googleusercontent.com"
+                      buttonText="Sign in with Google"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      cookiePolicy={"single_host_origin"}
+                    />
+                  </p>
                   <Route
                     render={({ history }) => (
                       <Button
@@ -134,10 +150,7 @@ function Admin_UserPage(props) {
                 </h1>
 
                 <br />
-                <Card
-                  border="primary"
-                  style={{ width: "18rem" }}
-                >
+                <Card border="primary" style={{ width: "18rem" }}>
                   <Card.Header>Contact Info</Card.Header>
                   <Card.Body>
                     {/* <Card.Title>Primary Card Title</Card.Title> */}
